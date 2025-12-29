@@ -1,4 +1,4 @@
-import TaskStatusChart from "../../components/TaskStatusChart";
+import TaskStatusChart from "../../components/taskStatusChart";
 import {
   MdChecklist,
   MdPendingActions,
