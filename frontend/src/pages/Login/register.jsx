@@ -14,7 +14,7 @@ export default function Register() {
 
   const handleRegister = async () => {
     try {
-      await API.post("api/auth/register", form);
+      await API.post("https://taskproject-backend-0sqw.onrender.com/api/auth/register", form);
 
       alert("Registration successful");
 

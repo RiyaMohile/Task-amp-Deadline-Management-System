@@ -14,7 +14,7 @@ export default function AdminLogin() {
 
   const handleLogin = async () => {
     try {
-      const res = await API.post("api/auth/login", { email, password });
+      const res = await API.post("https://taskproject-backend-0sqw.onrender.com/api/auth/login", { email, password });
 
       if (res.data.role !== "admin") {
         alert("Not an admin account");

@@ -6,7 +6,7 @@ export default function InternDashboard() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    API.get("/tasks/my").then(res => setTasks(res.data));
+    API.get("https://taskproject-backend-0sqw.onrender.com/tasks/my").then(res => setTasks(res.data));
   }, []);
 
   return (

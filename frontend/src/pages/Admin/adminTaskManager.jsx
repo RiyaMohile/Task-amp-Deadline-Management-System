@@ -23,9 +23,9 @@ export default function AdminTaskManager() {
   }, [showModal]);
 
   const fetchData = async () => {
-    const t = await API.get("/tasks");
-    const p = await API.get("/projects");
-    const u = await API.get("/users?role=intern");
+    const t = await API.get("https://taskproject-backend-0sqw.onrender.com/tasks");
+    const p = await API.get("https://taskproject-backend-0sqw.onrender.com/projects");
+    const u = await API.get("https://taskproject-backend-0sqw.onrender.com/users?role=intern");
     setTasks(t.data);
     setProjects(p.data);
     setInterns(u.data);
@@ -54,9 +54,9 @@ export default function AdminTaskManager() {
     }
 
     if (editId) {
-      await API.put(`/tasks/${editId}`, form);
+      await API.put(`https://taskproject-backend-0sqw.onrender.com/tasks/${editId}`, form);
     } else {
-      await API.post("/tasks", form);
+      await API.post("https://taskproject-backend-0sqw.onrender.com/tasks", form);
     }
 
     resetForm();
@@ -79,7 +79,7 @@ export default function AdminTaskManager() {
 
   const handleDelete = async (id) => {
     if (window.confirm("Delete task?")) {
-      await API.delete(`/tasks/${id}`);
+      await API.delete(`https://taskproject-backend-0sqw.onrender.com/tasks/${id}`);
       fetchData();
     }
   };

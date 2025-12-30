@@ -15,7 +15,7 @@ export default function AdminProjects() {
   }, [showModal]);
 
   const fetchProjects = async () => {
-    const res = await API.get("/projects");
+    const res = await API.get("https://taskproject-backend-0sqw.onrender.com/projects");
     setProjects(res.data);
   };
 
@@ -33,9 +33,9 @@ export default function AdminProjects() {
     if (!name.trim()) return alert("Project name required");
 
     if (editId) {
-      await API.put(`/projects/${editId}`, { name, description });
+      await API.put(`https://taskproject-backend-0sqw.onrender.com/projects/${editId}`, { name, description });
     } else {
-      await API.post("/projects", { name, description });
+      await API.post("https://taskproject-backend-0sqw.onrender.com/projects", { name, description });
     }
 
     resetForm();
@@ -52,7 +52,7 @@ export default function AdminProjects() {
 
   const handleDelete = async (id) => {
     if (window.confirm("Delete project?")) {
-      await API.delete(`/projects/${id}`);
+      await API.delete(`https://taskproject-backend-0sqw.onrender.com/projects/${id}`);
       fetchProjects();
     }
   };
