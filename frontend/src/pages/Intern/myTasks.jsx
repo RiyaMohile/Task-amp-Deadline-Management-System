@@ -51,12 +51,12 @@ export default function MyTasks() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    API.get("https://taskproject-backend-0sqw.onrender.com/tasks/my").then((res) => setTasks(res.data));
+    API.get("/tasks/my").then((res) => setTasks(res.data));
   }, []);
 
   
   const updateStatus = async (id, status) => {
-    await API.put(`https://taskproject-backend-0sqw.onrender.com/tasks/${id}/status`, { status });
+    await API.put(`/tasks/${id}/status`, { status });
     setTasks((prev) =>
       prev.map((t) => (t._id === id ? { ...t, status } : t))
     );

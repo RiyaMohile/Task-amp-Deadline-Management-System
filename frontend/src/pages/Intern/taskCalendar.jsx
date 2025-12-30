@@ -7,7 +7,7 @@ export default function TaskCalendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {
-    API.get("https://taskproject-backend-0sqw.onrender.com/tasks/my").then(res => setTasks(res.data));
+    API.get("/tasks/my").then(res => setTasks(res.data));
   }, []);
 
   const year = currentDate.getFullYear();

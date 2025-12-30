@@ -15,7 +15,7 @@ export default function AdminProjects() {
   }, [showModal]);
 
   const fetchProjects = async () => {
-    const res = await API.get("https://taskproject-backend-0sqw.onrender.com/projects");
+    const res = await API.get("/projects");
     setProjects(res.data);
   };
 
@@ -33,9 +33,9 @@ export default function AdminProjects() {
     if (!name.trim()) return alert("Project name required");
 
     if (editId) {
-      await API.put(`https://taskproject-backend-0sqw.onrender.com/projects/${editId}`, { name, description });
+      await API.put(`projects/${editId}`, { name, description });
     } else {
-      await API.post("https://taskproject-backend-0sqw.onrender.com/projects", { name, description });
+      await API.post("/projects", { name, description });
     }
 
     resetForm();
@@ -52,7 +52,7 @@ export default function AdminProjects() {
 
   const handleDelete = async (id) => {
     if (window.confirm("Delete project?")) {
-      await API.delete(`https://taskproject-backend-0sqw.onrender.com/projects/${id}`);
+      await API.delete(`/projects/${id}`);
       fetchProjects();
     }
   };
@@ -73,7 +73,7 @@ export default function AdminProjects() {
         </button>
       </div>
 
-      {/* 🧱 PROJECT GRID (ONLY THIS SCROLLS) */}
+    
       <div className="flex-1 overflow-hidden">
         <div className="h-full overflow-y-auto pr-2">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -140,7 +140,7 @@ export default function AdminProjects() {
                 Cancel
               </button>
 
-              <button onClick={handleSubmit} className={`px-5 py-2 rounded text-white ${editId ? "bg-yellow-500" : "bg-blue-600"}`}>
+              <button onClick={handleSubmit} className={`px-5 py-2 rounded cursor-pointer text-white ${editId ? "bg-yellow-500" : "bg-blue-600"}`}>
                 {editId ? "Update Project" : "Create Project"}
               </button>
             </div>

@@ -23,9 +23,9 @@ export default function AdminTaskManager() {
   }, [showModal]);
 
   const fetchData = async () => {
-    const t = await API.get("https://taskproject-backend-0sqw.onrender.com/tasks");
-    const p = await API.get("https://taskproject-backend-0sqw.onrender.com/projects");
-    const u = await API.get("https://taskproject-backend-0sqw.onrender.com/users?role=intern");
+    const t = await API.get("/tasks");
+    const p = await API.get("/projects");
+    const u = await API.get("/users?role=intern");
     setTasks(t.data);
     setProjects(p.data);
     setInterns(u.data);
@@ -54,9 +54,9 @@ export default function AdminTaskManager() {
     }
 
     if (editId) {
-      await API.put(`https://taskproject-backend-0sqw.onrender.com/tasks/${editId}`, form);
+      await API.put(`/tasks/${editId}`, form);
     } else {
-      await API.post("https://taskproject-backend-0sqw.onrender.com/tasks", form);
+      await API.post("/tasks", form);
     }
 
     resetForm();
@@ -177,7 +177,7 @@ export default function AdminTaskManager() {
             onClick={(e) => e.stopPropagation()}
             className="bg-white rounded-2xl shadow-2xl w-[480px] p-7"
           >
-            <h2 className="text-xl font-bold mb-5">
+            <h2 className="text-xl font-bold mb-5 cursor-pointer">
               {editId ? "Edit Task" : "Create New Task"}
             </h2>
 
@@ -268,7 +268,7 @@ export default function AdminTaskManager() {
 
               <button
                 onClick={handleSubmit}
-                className={`px-5 py-2 rounded text-white
+                className={`px-5 py-2 rounded text-white cursor-pointer
                   ${
                     editId
                       ? "bg-yellow-500"
