@@ -79,7 +79,7 @@ export default function AdminTaskManager() {
 
   const handleDelete = async (id) => {
     if (window.confirm("Delete task?")) {
-      await API.delete(`https://taskproject-backend-0sqw.onrender.com/tasks/${id}`);
+      await API.delete(`/tasks/${id}`);
       fetchData();
     }
   };
