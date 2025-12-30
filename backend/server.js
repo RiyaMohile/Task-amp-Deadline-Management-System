@@ -8,19 +8,7 @@ connectDB();
 const app = express();
 
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "http://task-frontend-silk-tau.vercel.app",
-       "http://task-frontend-git-main-riyas-projects-56d981d5.vercel.app",
-       "task-frontend-7d9wjt9q6-riyas-projects-56d981d5.vercel.app"
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 
