@@ -32,8 +32,15 @@ export default function AdminTaskManager() {
   };
 
   useEffect(() => {
+  fetchData();
+
+  const interval = setInterval(() => {
     fetchData();
-  }, []);
+  }, 5000); // every 5 seconds
+
+  return () => clearInterval(interval);
+}, []);
+
 
   const resetForm = () => {
     setForm({
@@ -143,6 +150,20 @@ export default function AdminTaskManager() {
   >
     {task.priority}
   </span>
+
+  <span
+  className={`px-2 py-1 rounded text-xs font-semibold
+    ${
+      task.status === "Completed"
+        ? "bg-green-100 text-green-700"
+        : task.status === "In Progress"
+        ? "bg-purple-100 text-purple-700"
+        : "bg-yellow-100 text-yellow-700"
+    }`}
+>
+  {task.status}
+</span>
+
 
   <span className="px-2 py-1 rounded bg-purple-100 text-purple-700">
     {task.assignedTo?.name || "Unassigned"}
